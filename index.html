@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="jslib/leaflet/leaflet.css">
+    <link rel="stylesheet" href="jslib/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="jslib/leaflet.draw/leaflet.draw.css">
+    <link rel="stylesheet" href="jslib/leaflet.easybutton/easy-button.css">
+    <link rel="stylesheet" href="jslib/leaflet.sidebar/leaflet-sidebar.css">
+    <link rel="stylesheet" href="jslib/leaflet.contextmenu/leaflet.contextmenu.css">
+
+    <script src="jslib/leaflet/leaflet-src.js"></script>
+
+    <script src="jslib/leaflet.easybutton/easy-button.js"></script>
+    <script src="jslib/leaflet.draw/leaflet.draw-src.js"></script>
+    <script src="jslib/leaflet.sidebar/leaflet-sidebar.js"></script>
+    <script src="jslib/leaflet.contextmenu/leaflet.contextmenu.js"></script>
+    <!--script src="jslib/leaflet.toolbar/ColorPicker.js"></script>
+    <script src="jslib/Leaflet.Control.Custom.js"></script-->
+    <title>WMS GIS Application</title>
+
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        html, body, #map {
+            height: 100%;
+            width: 100%;
+        }
+
+        .lorem {
+            font-style: italic;
+            color: #AAA;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- SIDE BAR -->
+    <div id="sidebar" class="sidebar collapsed">
+        <!-- Nav tabs -->
+        <div class="sidebar-tabs">
+            <ul role="tablist">
+                <li><a href="#home" role="tab"><i class="fa fa-bars"></i></a></li>
+                <li><a href="#profile" role="tab"><i class="fa fa-user"></i></a></li>
+                <li class="disabled"><a href="#messages" role="tab"><i class="fa fa-envelope"></i></a></li>
+                <li><a href="https://github.com/Turbo87/sidebar-v2" role="tab" target="_blank"><i class="fa fa-github"></i></a></li>
+            </ul>
+
+            <ul role="tablist">
+                <li><a href="#settings" role="tab"><i class="fa fa-gear"></i></a></li>
+            </ul>
+        </div>
+
+        <!-- Tab panes -->
+        <div class="sidebar-content">
+            <div class="sidebar-pane" id="home">
+                <h1 class="sidebar-header">
+                    sidebar-v2
+                    <span class="sidebar-close"><i class="fa fa-caret-left"></i></span>
+                </h1>
+
+                <p>A responsive sidebar for mapping libraries like <a href="http://leafletjs.com/">Leaflet</a> or <a href="http://openlayers.org/">OpenLayers</a>.</p>
+
+                <p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
+                    et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+                    Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor
+                    sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                    aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
+                    kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+
+                <p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
+                    et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+                    Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor
+                    sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                    aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
+                    kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+
+                <p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
+                    et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+                    Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor
+                    sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                    aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
+                    kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+
+                <p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
+                    et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+                    Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor
+                    sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                    aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
+                    kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+            </div>
+
+            <div class="sidebar-pane" id="profile">
+                <h1 class="sidebar-header">Profile<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+            </div>
+
+            <div class="sidebar-pane" id="messages">
+                <h1 class="sidebar-header">Messages<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+            </div>
+
+            <div class="sidebar-pane" id="settings">
+                <h1 class="sidebar-header">Settings<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+            </div>
+        </div>
+    </div>
+    <div id="map" class="sidebar-map"></div>
+    <script>
+
+        var map = L.map('map', {
+            //zoomControl: false,
+            contextmenu: true,
+            contextmenuWidth: 140,
+            contextmenuItems: [{
+                text: 'Show coordinates',
+                callback: showCoordinates
+            }, {
+                text: 'Center map here',
+                callback: centerMap
+            }, '-', {
+                text: 'Zoom in',
+                icon: 'images/zoom-in.png',
+                callback: zoomIn
+            }, {
+                text: 'Zoom out',
+                icon: 'images/zoom-out.png',
+                callback: zoomOut
+            }]
+        }).setView([0.91542, 104.43871], 12);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+
+        
+
+        var sidebar = L.control.sidebar('sidebar').addTo(map);
+        //new L.Control.Zoom({ position: 'topright' }).addTo(map);
+
+        L.marker([0.91542, 104.43871], {
+            contextmenu: true,
+            contextmenuItems: [{
+                text: 'Marker item',
+                index: 0
+            }, {
+                separator: true,
+                index: 1
+            }]
+        }).addTo(map);
+
+        function showCoordinates(e) {
+            alert(e.latlng);
+        }
+
+        function centerMap(e) {
+            map.panTo(e.latlng);
+        }
+
+        function zoomIn(e) {
+            map.zoomIn();
+        }
+
+        function zoomOut(e) {
+            map.zoomOut();
+        }
+
+        /// DRAW Control
+        var editableLayers = new L.FeatureGroup();
+        map.addLayer(editableLayers);
+
+        var MyCustomMarker = L.Icon.extend({
+            options: {
+                shadowUrl: null,
+                iconAnchor: new L.Point(12, 12),
+                iconSize: new L.Point(25, 41),
+                iconUrl: 'jslib/leaflet/images/marker-icon.png'
+            }
+        });
+
+        var options = {
+            position: 'topright',
+            draw: {
+                polyline: {
+                    shapeOptions: {
+                        color: '#f357a1',
+                        weight: 3
+                    }
+                },
+                polygon: {
+                    allowIntersection: false, // Restricts shapes to simple polygons
+                    drawError: {
+                        color: '#e1e100', // Color the shape will turn when intersects
+                        message: '<strong>Oh snap!<strong> you can\'t draw that!' // Message that will show when intersect
+                    },
+                    shapeOptions: {
+                        color: '#bada55'
+                    }
+                },
+                circle: false, // Turns off this drawing tool
+                rectangle: {
+                    shapeOptions: {
+                        clickable: false
+                    }
+                },
+                marker: {
+                    icon: new MyCustomMarker()
+                }
+            },
+            edit: {
+                featureGroup: editableLayers, //REQUIRED!!
+                remove: false
+            }
+        };
+
+        var drawControl = new L.Control.Draw(options);
+        map.addControl(drawControl);
+
+        map.on(L.Draw.Event.CREATED, function (e) {
+            var type = e.layerType,
+                layer = e.layer;
+
+            if (type === 'marker') {
+                layer.bindPopup('A popup!');
+            }
+
+            editableLayers.addLayer(layer);
+        });
+
+        var helloPopup = L.popup().setContent('Hello World!');
+
+        L.easyButton('fa-globe', function (btn, map) {
+            helloPopup.setLatLng(map.getCenter()).openOn(map);
+        }).addTo(map);
+
+    </script>
+</body>
+
+</html>
