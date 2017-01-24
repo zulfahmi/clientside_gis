@@ -8,15 +8,16 @@
     <link rel="stylesheet" href="jslib/leaflet.draw/leaflet.draw.css">
     <link rel="stylesheet" href="jslib/leaflet.easybutton/easy-button.css">
     <link rel="stylesheet" href="jslib/leaflet.sidebar/leaflet-sidebar.css">
+    <link rel="stylesheet" href="jslib/leaflet.scalefactor/leaflet.scalefactor.css">
     <link rel="stylesheet" href="jslib/leaflet.contextmenu/leaflet.contextmenu.css">
 
     <script src="jslib/leaflet/leaflet-src.js"></script>
-
+    <script src="jslib/jquery-3.1.1.js"></script>
     <script src="jslib/leaflet.easybutton/easy-button.js"></script>
     <script src="jslib/leaflet.draw/leaflet.draw-src.js"></script>
     <script src="jslib/leaflet.sidebar/leaflet-sidebar.js"></script>
     <script src="jslib/leaflet.contextmenu/leaflet.contextmenu.js"></script>
-    <!--script src="jslib/leaflet.toolbar/ColorPicker.js"></script>
+    <!--script src="jslib/leaflet.scalefactor/leaflet.scalefactor.js"></script>
     <script src="jslib/Leaflet.Control.Custom.js"></script-->
     <title>WMS GIS Application</title>
 
@@ -43,10 +44,10 @@
         <!-- Nav tabs -->
         <div class="sidebar-tabs">
             <ul role="tablist">
-                <li><a href="#home" role="tab"><i class="fa fa-bars"></i></a></li>
+                <li><a href="#home" role="tab"><i class="fa fa-bars"></i></a></li>                
+                <li><a href="#messages" role="tab"><i class="fa fa-map-o"></i></a></li>
                 <li><a href="#profile" role="tab"><i class="fa fa-user"></i></a></li>
-                <li class="disabled"><a href="#messages" role="tab"><i class="fa fa-envelope"></i></a></li>
-                <li><a href="https://github.com/Turbo87/sidebar-v2" role="tab" target="_blank"><i class="fa fa-github"></i></a></li>
+                <!--li><a href="https://github.com/Turbo87/sidebar-v2" role="tab" target="_blank"><i class="fa fa-github"></i></a></li-->
             </ul>
 
             <ul role="tablist">
@@ -58,47 +59,30 @@
         <div class="sidebar-content">
             <div class="sidebar-pane" id="home">
                 <h1 class="sidebar-header">
-                    sidebar-v2
+                    Master Data
                     <span class="sidebar-close"><i class="fa fa-caret-left"></i></span>
                 </h1>
 
-                <p>A responsive sidebar for mapping libraries like <a href="http://leafletjs.com/">Leaflet</a> or <a href="http://openlayers.org/">OpenLayers</a>.</p>
-
-                <p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
-                    et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-                    Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor
-                    sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                    aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
-                    kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-
-                <p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
-                    et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-                    Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor
-                    sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                    aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
-                    kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-
-                <p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
-                    et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-                    Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor
-                    sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                    aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
-                    kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-
-                <p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
-                    et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-                    Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor
-                    sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                    aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
-                    kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                <table>
+                    <tr>
+                        <td>Master Zona</td>
+                    </tr>
+                    <tr>
+                        <td>Master Material</td>
+                    </tr>
+                    <tr>
+                        <td>Master Model Pipa</td>
+                    </tr>
+                    <tr>
+                        <td>Master Attribute</td>
+                    </tr>
+                </table>
             </div>
-
-            <div class="sidebar-pane" id="profile">
-                <h1 class="sidebar-header">Profile<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
-            </div>
-
             <div class="sidebar-pane" id="messages">
-                <h1 class="sidebar-header">Messages<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+                <h1 class="sidebar-header">Pipeline Layer<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+            </div>
+            <div class="sidebar-pane" id="profile">
+                <h1 class="sidebar-header">User Management<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
             </div>
 
             <div class="sidebar-pane" id="settings">
@@ -109,37 +93,18 @@
     <div id="map" class="sidebar-map"></div>
     <script>
 
-        var map = L.map('map', {
-            //zoomControl: false,
-            contextmenu: true,
-            contextmenuWidth: 140,
-            contextmenuItems: [{
-                text: 'Show coordinates',
-                callback: showCoordinates
-            }, {
-                text: 'Center map here',
-                callback: centerMap
-            }, '-', {
-                text: 'Zoom in',
-                icon: 'images/zoom-in.png',
-                callback: zoomIn
-            }, {
-                text: 'Zoom out',
-                icon: 'images/zoom-out.png',
-                callback: zoomOut
-            }]
-        }).setView([0.91542, 104.43871], 12);
+        var map = L.map('map').setView([0.91542, 104.43871], 12);
 
         L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
 
-        
+
 
         var sidebar = L.control.sidebar('sidebar').addTo(map);
         //new L.Control.Zoom({ position: 'topright' }).addTo(map);
-
+        /*
         L.marker([0.91542, 104.43871], {
             contextmenu: true,
             contextmenuItems: [{
@@ -150,7 +115,7 @@
                 index: 1
             }]
         }).addTo(map);
-
+        */
         function showCoordinates(e) {
             alert(e.latlng);
         }
@@ -165,6 +130,10 @@
 
         function zoomOut(e) {
             map.zoomOut();
+        }
+
+        function getlayer(e) {
+            console.log(e);
         }
 
         /// DRAW Control
@@ -224,6 +193,44 @@
 
             if (type === 'marker') {
                 layer.bindPopup('A popup!');
+                layer.bindContextMenu({
+                    contextmenu: true,
+                    contextmenuItems: [{
+                        text: 'Marker item',
+                        index: 0,
+                        callback: getlayer
+                    }, {
+                        separator: true,
+                        index: 1
+                    }]
+                });
+                console.log(layer.contextmenu);
+            }
+            if (type === 'polyline') {
+                layer.bindPopup('A Polyline popup!');
+                layer.bindContextMenu({
+                    contextmenu: true,
+                    contextmenuItems: [{
+                        text: 'Jalur Survey',
+                        index: 0,
+                        callback: function() { console.log(layer) }
+                    },
+                    {
+                        text: 'Jalur Pipa',
+                        index: 1,
+                        callback: function() { console.log(layer) }
+                    }, 
+                    {
+                        separator: true,
+                        index: 2
+                    },
+                    {
+                        text: 'Edit Data Pipa',
+                        index: 3,
+                        callback: function() { console.log(layer) }
+                    }]
+                });
+                console.log(layer.contextmenu);
             }
 
             editableLayers.addLayer(layer);
@@ -231,9 +238,21 @@
 
         var helloPopup = L.popup().setContent('Hello World!');
 
-        L.easyButton('fa-globe', function (btn, map) {
-            helloPopup.setLatLng(map.getCenter()).openOn(map);
+        L.easyButton('fa-print', function (btn, map) {
+            //helloPopup.setLatLng(map.getCenter()).openOn(map);
         }).addTo(map);
+        L.easyButton('fa-upload', function (btn, map) {
+            //helloPopup.setLatLng(map.getCenter()).openOn(map);
+        }).addTo(map);
+        L.easyButton('fa-download', function (btn, map) {
+            //helloPopup.setLatLng(map.getCenter()).openOn(map);
+        }).addTo(map);
+        L.easyButton('fa-file-pdf-o', function (btn, map) {
+            //helloPopup.setLatLng(map.getCenter()).openOn(map);
+        }).addTo(map);
+
+        // SCALEFACTOR
+       // L.control.scalefactor({ position: 'bottomright' }).addTo(map);
 
     </script>
 </body>
